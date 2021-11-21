@@ -5,11 +5,11 @@ from itertools import chain
 from collections import Counter
 
 reddit = praw.Reddit(
-    client_id="C71w7udlrNFUvaVEirRNNw",
-    client_secret="y0jjZYX1X4dyxXZz7khQ-5bGfoCTXg",
-    password="36chinatown",
-    user_agent="SOURAV RAI",
-    username="indianmonster",
+    client_id="",
+    client_secret="",
+    password="",
+    user_agent="",
+    username="",
 )
 
 submission = reddit.submission(url="https://www.reddit.com/r/anime/comments/m6odg8/your_top_10_anime_list/")
