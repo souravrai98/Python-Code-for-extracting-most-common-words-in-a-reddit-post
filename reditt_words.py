@@ -4,6 +4,8 @@ import re
 from itertools import chain
 from collections import Counter
 
+
+#Create a reddit app to get all the below deatils on https://www.reddit.com/prefs/apps 
 reddit = praw.Reddit(
     client_id="",
     client_secret="",
@@ -12,21 +14,21 @@ reddit = praw.Reddit(
     username="",
 )
 
-submission = reddit.submission(url="https://www.reddit.com/r/anime/comments/m6odg8/your_top_10_anime_list/")
+submission = reddit.submission(url="https://www.reddit.com/r/anime/comments/m6odg8/your_top_10_anime_list/") 
 submissionList = []
 submission.comments.replace_more(limit=None)
-for comment in submission.comments.list():
+for comment in submission.comments.list():         # Getting the list of all the comment ID's in the reddit post
     submissionList.append(comment)
 
 
-def word_extraction(sentence):    
+def word_extraction(sentence):    # Function for removing all the stop words
   ignore = stopwords.words('english')  
   words = re.sub("[^\w]", " ",  sentence).split()    
   cleaned_text = [w.lower() for w in words if w not in ignore]    
   return cleaned_text
 
 
-def data_cleaning(comments):
+def data_cleaning(comments):   # Function to clean the data 
     lower_l = [comment.body.lower() for comment in comments]
     
     sans_virgules = [address.replace(',', ' ') for address in lower_l]
@@ -41,4 +43,4 @@ def data_cleaning(comments):
 
 cleaned = data_cleaning(submissionList)
 
-print(Counter(chain(*cleaned)).most_common(80))
+print(Counter(chain(*cleaned)).most_common(80))      
