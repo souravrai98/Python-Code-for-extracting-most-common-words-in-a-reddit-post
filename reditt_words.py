@@ -27,14 +27,8 @@ def word_extraction(sentence):
 
 
 def data_cleaning(comments):
-    l = []
-    for a in comments:
-        l.append(a.body)
-
-    lower_l=[]
-    for a in l:
-        lower_l.append(a.lower())
-
+    lower_l = [comment.body.lower() for comment in comments]
+    
     sans_virgules = [address.replace(',', ' ') for address in lower_l]
     sans_virgules_1 = [address.replace('\n', ' ') for address in sans_virgules]
 
